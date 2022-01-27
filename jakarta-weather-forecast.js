@@ -1,12 +1,13 @@
 // Fetching data
 const axios = require("axios");
+require("dotenv").config();
 
 // First Sentences
 console.log("Weather Forecast: ");
 
 axios
   .get(
-    "https://api.openweathermap.org/data/2.5/onecall?lat=-6.2146&lon=106.8451&exclude=hourly,minutely,alerts,current&appid=32a4c8edea6e5e3a77268e159f5afc38"
+    `https://api.openweathermap.org/data/2.5/onecall?lat=-6.2146&lon=106.8451&exclude=hourly,minutely,alerts,current&appid=${process.env.API_WEATHER}`
   )
   .then(({ data }) => {
     data = data.daily.map((e) => {
